@@ -1,5 +1,21 @@
 {
     "test":{
         "btn":"Button"
+    },
+    "form":{
+        "validate":{
+            "required":"#Required",
+            "minLength":"#Field must contain at least {count} character(s)",
+            "maxLength":"#Field must contain at most {count} character(s)",
+            "email":"#Field format a{a}a"
+        }
+    },
+    "signIn":{
+        "cardTitke":"Login in application",
+        "labelEmail":"Email",
+        "placeholderEmail":"email",
+        "labelPassword":"Password",
+        "placeholderPassword":"password",
+        "btn":"Login"
     }
 }
