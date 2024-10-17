@@ -1,5 +1,27 @@
 {
-    "test":{
-        "btn":"Button ru"
+    "form":{
+        "validate":{
+            "required":"1Required",
+            "minLength":"1Field must contain at least {count} character(s)",
+            "maxLength":"1Field must contain at most {count} character(s)",
+            "email":"1Field format a{a}a"
+        }
+    },
+    "signIn":{
+        "cardTitke":"1Login in application",
+        "labelEmail":"1Email",
+        "placeholderEmail":"1email",
+        "labelPassword":"1Password",
+        "placeholderPassword":"1password",
+        "btn":"1Login"
+    },
+    "header":{
+        "sheet":{
+            "title":"1Configuration application",
+            "description":{
+                "language":"1Language",
+                "theme":"1Theme"
+            }
+        }
     }
 }

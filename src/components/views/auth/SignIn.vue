@@ -33,7 +33,7 @@ const FORM_EMAIL_OPTIONS = "@a.a"
 const FORM_MINLENGTH_ERROR = "minLength"
 const FORM_MAXLENGTH_ERROR = "maxLength"
 
-const formSchema = toTypedSchema(zod.object({
+const formSchema = computed(() => toTypedSchema(zod.object({
     email: zod.string()
         .email({
             message: t("form.validate." + FORM_EMAIL_ERROR, { a: FORM_EMAIL_OPTIONS })
@@ -48,7 +48,7 @@ const formSchema = toTypedSchema(zod.object({
         .min(FORM_PASSWORD_MIN_SYMBOLS, {
             message: t("form.validate." + FORM_MINLENGTH_ERROR, { count: FORM_PASSWORD_MIN_SYMBOLS })
         }),
-}))
+})))
 
 const { handleSubmit, isFieldDirty } = useForm({//
     validationSchema: formSchema,

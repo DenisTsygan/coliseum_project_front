@@ -1,5 +1,27 @@
 {
-    "test":{
-        "btn":"Button ua"
+    "form":{
+        "validate":{
+            "required":"12Required",
+            "minLength":"12Field must contain at least {count} character(s)",
+            "maxLength":"12Field must contain at most {count} character(s)",
+            "email":"12Field format a{a}a"
+        }
+    },
+    "signIn":{
+        "cardTitke":"12Login in application",
+        "labelEmail":"12Email",
+        "placeholderEmail":"12email",
+        "labelPassword":"12Password",
+        "placeholderPassword":"12password",
+        "btn":"12Login"
+    },
+    "header":{
+        "sheet":{
+            "title":"12Configuration application",
+            "description":{
+                "language":"12Language",
+                "theme":"12Theme"
+            }
+        }
     }
 }

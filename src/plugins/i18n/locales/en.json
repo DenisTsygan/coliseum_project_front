@@ -1,7 +1,4 @@
 {
-    "test":{
-        "btn":"Button"
-    },
     "form":{
         "validate":{
             "required":"#Required",
@@ -17,5 +14,14 @@
         "labelPassword":"Password",
         "placeholderPassword":"password",
         "btn":"Login"
+    },
+    "header":{
+        "sheet":{
+            "title":"Configuration application",
+            "description":{
+                "language":"Language",
+                "theme":"Theme"
+            }
+        }
     }
 }
