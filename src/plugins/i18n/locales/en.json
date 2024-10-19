@@ -50,6 +50,19 @@
         },
         "bar-chart-custom-tooltip":{
             "text":"All electricity consumed"
+        },
+        "data-table-pagination":{
+            "rows": "row(s)",
+            "rowsPerPage": "Rows per page",
+            "page":"Page",
+            "of":"of"
+        },
+        "data-table-toolbar":{
+            "filterPlaceHolder":"Filter name...",
+            "reset":"Reset"
+        },
+        "column":{
+            "allElectricityConsumed":"All electricy consumed"
         }
     }
 }

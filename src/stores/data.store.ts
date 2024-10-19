@@ -5,7 +5,7 @@ import { ref } from "vue"
 function getRandomNumber(min:number, max:number) {
     return (Math.random() * (max - min) + min).toFixed(2);
 }
-const generateDATA = (lengthMounth:number,periodDate:string[])=>{
+const generateDATA = (lengthMounth:number,periodDate:string)=>{
     let arr:IElectricityConsumed[] = []
     for(let i=0;i<lengthMounth;i++){
         let arrDays:IElectricityConsumedDay[] = []
@@ -25,7 +25,7 @@ const generateDATA = (lengthMounth:number,periodDate:string[])=>{
         let newElectricityConsumed:IElectricityConsumed = {
             id:"id_"+ i,
             name:"name_un_"+i,
-            periodDate:periodDate[i],
+            periodDate:periodDate,
             period: 512334,
             allElectricyConsumed: +getRandomNumber(10000, 1000000),
             electricyConsumedDays: arrDays
@@ -41,7 +41,7 @@ export const useDatastore = defineStore('data', () => {
     //TODO fetch data and loader
     const fetchDataCurrentMounth = async()=>{
         dataElectricityConsumedPeriod.value = "02-2024"
-        dataElectricityConsumed.value = generateDATA(3,["02-2024","02-2024","02-2024"])
+        dataElectricityConsumed.value = generateDATA(200,"02-2024")
     }
     const getNameById = (id:string)=>{
         return dataElectricityConsumed.value.find((el)=>{

@@ -4,7 +4,8 @@ import { ColumnDef } from '@tanstack/vue-table'
 import DataTableEditName from '@/components/electricity-consumed/data-table-edit-name.vue'
 import DataTableShowDays from '@/components/electricity-consumed/data-table-show-days.vue'
 import { useI18n } from 'vue-i18n'
-
+import { Button } from '@/components/shadcn/ui/button'
+import { ArrowDown } from 'lucide-vue-next'
 export function useColumns(){
     const {t} = useI18n()
     const columnsComputed= computed(()=>{
@@ -25,7 +26,13 @@ export function useColumns(){
             },
             {
                 accessorKey: 'allElectricyConsumed',
-                header: () => h('div', { class: 'text-center' }, 'All electricy consumed'),
+                header: ({ column }) => {
+                    return h('div',{class:"flex justify-center"},h(Button, {
+                        style:"mx-auto",
+                        variant: 'ghost',
+                        onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+                    }, () => [t('electricityConsumed.column.allElectricityConsumed'), h(ArrowDown, { class: 'ml-2 h-4 w-4' })])) 
+                },
                 cell: ({ row }) => {
                     return h('div', { class: 'text-center font-medium' }, row.getValue('allElectricyConsumed')+" "+t("unitsOfMeasurement.electricityConsumed"))
                 },

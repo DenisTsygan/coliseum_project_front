@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="TData, TValue">
-import type { ColumnDef } from '@tanstack/vue-table'
+//TODO switch generic
+import type { ColumnDef, ColumnFiltersState, SortingState } from '@tanstack/vue-table'
 import {
     Table,
     TableBody,
@@ -9,12 +10,19 @@ import {
     TableRow,
 } from '@/components/shadcn/ui/table'
 import { Label } from '@/components/shadcn/ui/label';
+import DataTablePagination from '@/components/electricity-consumed/data-table-pagination.vue';
+import DataTableToolbar from '@/components/electricity-consumed/data-table-toolbar.vue';
 import {
     FlexRender,
     getCoreRowModel,
+    getFilteredRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
     useVueTable,
 } from '@tanstack/vue-table'
 import { useI18n } from 'vue-i18n';
+import { valueUpdater } from '@/utils/shadcn';
+import { ref } from 'vue';
 
 const { t } = useI18n()
 
@@ -24,10 +32,22 @@ const props = defineProps<{
     period: string
 }>()
 
+const columnFilters = ref<ColumnFiltersState>([])
+const sorting = ref<SortingState>([])
+
 const table = useVueTable({
     get data() { return props.data },
     get columns() { return props.columns },
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
+    getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
+    state: {
+        get columnFilters() { return columnFilters.value },
+        get sorting() { return sorting.value },
+    },
 })
 
 const emits = defineEmits(["openDialogEditName", "openSheetDays"])
@@ -42,6 +62,7 @@ const openSheet = (id: string) => {
 
 <template>
     <Label class=" text-xl ">{{ t("electricityConsumed.data-table.period") }} : {{ period }}</Label>
+    <DataTableToolbar :table="table" />
     <div class="border rounded-md ">
         <Table>
             <TableHeader>
@@ -72,4 +93,5 @@ const openSheet = (id: string) => {
             </TableBody>
         </Table>
     </div>
+    <DataTablePagination :table="table" />
 </template>
