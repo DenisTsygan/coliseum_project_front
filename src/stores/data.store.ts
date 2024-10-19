@@ -9,14 +9,14 @@ const generateDATA = (lengthMounth:number,periodDate:string[])=>{
     let arr:IElectricityConsumed[] = []
     for(let i=0;i<lengthMounth;i++){
         let arrDays:IElectricityConsumedDay[] = []
-        for (let j = 0; j < 24; j++) {
+        for (let j = 0; j < 30; j++) {
             let arrHours = []
             for (let g = 0; g < 24; g++) {
                 arrHours[g]= +getRandomNumber(10,100)
             }
             arrDays[j]= {
                 id:"id_"+i+"_"+j,
-                periodDate:j,
+                periodDate:j+1,
                 allElectricyConsumed:+getRandomNumber(100,1000),
                 electricyConsumedHours:arrHours
             }

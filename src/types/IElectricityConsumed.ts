@@ -12,7 +12,16 @@ export interface IElectricityConsumedDay{
     allElectricyConsumed: number,// kW·h кВт·ч общее потребление за день клиента
     electricyConsumedHours : number[],// array потребление за час из 24 елементов
 }
-
+const test:IElectricityConsumedDay = {
+    id:"1",
+    periodDate:1,
+    allElectricyConsumed:1,
+    electricyConsumedHours:[]
+}
+export const allElectricyConsumedKey = "allElectricyConsumed"
+export const periodDateKey = "periodDate"
+export const electricyConsumedHoursKey = "electricyConsumedHours"
+export const IElectricityConsumedDayKeys = Object.keys(test)
 /*export interface IElectricalParams{
     current: number,
     voltage:number,

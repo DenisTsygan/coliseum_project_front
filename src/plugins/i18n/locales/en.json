@@ -1,4 +1,8 @@
 {
+    "unitsOfMeasurement":{
+        "electricityConsumed":"kW*h",
+        "hours":"hours"
+    },
     "form":{
         "validate":{
             "required":"#Required",
@@ -29,8 +33,9 @@
             "btn": "Edit name"
         },
         "data-table":{
-            "period":"Period:",
-            "noResults":"No results."
+            "period":"Period",
+            "noResults":"No results.",
+            "days":"Days"
         },
         "dialog-edit-name":{
             "description":"Make changes to name. Click save when you're done.",
@@ -41,7 +46,10 @@
         },
         "sheet-days":{
             "range":"Electricy consumed from",
-            "of":"of"
+            "to":"to"
+        },
+        "bar-chart-custom-tooltip":{
+            "text":"All electricity consumed"
         }
     }
 }

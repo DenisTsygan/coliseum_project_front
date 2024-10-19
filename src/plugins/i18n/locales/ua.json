@@ -1,4 +1,8 @@
 {
+    "unitsOfMeasurement":{
+        "electricityConsumed":"12kW*h",
+        "hours":"12hours"
+    },
     "form":{
         "validate":{
             "required":"12Required",
@@ -29,8 +33,9 @@
             "btn": "12Edit name"
         },
         "data-table":{
-            "period":"12Period:",
-            "noResults":"12No results."
+            "period":"12Period",
+            "noResults":"12No results.",
+            "days":"12Days"
         },
         "dialog-edit-name":{
             "description":"12Make changes to name. Click save when you're done.",
@@ -41,7 +46,10 @@
         },
         "sheet-days":{
             "range":"12Electricy consumed from",
-            "of":"12of"
+            "to":"12to"
+        },
+        "bar-chart-custom-tooltip":{
+            "text":"12All electricity consumed"
         }
     }
 }

@@ -7,6 +7,7 @@ import ua from './locales/ua.json'
 export default createI18n({
     locale: import.meta.env.VITE_I18N_DEFAULT_LOCALE,
     legacy:false,
+    globalInjection:true,
     messages:{
         en:en,
         ru:ru,

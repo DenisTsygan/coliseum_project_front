@@ -41,7 +41,7 @@ const openSheet = (id: string) => {
 </script>
 
 <template>
-    <Label class=" text-xl ">{{ t("electricityConsumed.data-table.period") }} {{ period }}</Label>
+    <Label class=" text-xl ">{{ t("electricityConsumed.data-table.period") }} : {{ period }}</Label>
     <div class="border rounded-md ">
         <Table>
             <TableHeader>
