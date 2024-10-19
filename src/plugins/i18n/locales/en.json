@@ -23,5 +23,25 @@
                 "theme":"Theme"
             }
         }
+    },
+    "electricityConsumed":{
+        "data-table-edit-name":{
+            "btn": "Edit name"
+        },
+        "data-table":{
+            "period":"Period:",
+            "noResults":"No results."
+        },
+        "dialog-edit-name":{
+            "description":"Make changes to name. Click save when you're done.",
+            "label":"Name",
+            "placeholder":"name",
+            "labelDescrition":"This is name client.",
+            "submit":"Save changes"
+        },
+        "sheet-days":{
+            "range":"Electricy consumed from",
+            "of":"of"
+        }
     }
 }

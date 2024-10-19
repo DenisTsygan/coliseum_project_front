@@ -21,8 +21,8 @@ export const useAuthStore = defineStore('auth', () => {
         return getIsAuthUser()
       }
       return getIsAuthUser()*/
-        isAuthUser.value = false
-        return false
+        isAuthUser.value = true
+        return true
     }
     const signIn  =(userData)=>{
         isAuthUser.value = true

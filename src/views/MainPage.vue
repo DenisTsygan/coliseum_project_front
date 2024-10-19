@@ -1,13 +1,41 @@
 <script setup lang="ts">
-import Button from '@/components/shadcn/ui/button/Button.vue';
-import { useI18n } from 'vue-i18n';
+import { computed, onMounted, ref } from 'vue'
+import { columns } from '@/components/electricity-consumed/columns';
+import DataTable from '@/components/electricity-consumed/data-table.vue';
+import DialogEditName from '@/components/electricity-consumed/dialog-edit-name.vue';
+import SheetDays from '@/components/electricity-consumed/sheet-days.vue';
+import { useDatastore } from '@/stores/data.store';
 
-const { t } = useI18n()
+const dataStore = useDatastore()
 
+const data = computed(() => dataStore.dataElectricityConsumed)
+const dateOfData = computed(() => dataStore.dataElectricityConsumedPeriod)
+onMounted(async () => {
+    await dataStore.fetchDataCurrentMounth()
+})
+
+const idEditNameDialog = ref<string>("")
+const openDialogEditNameById = (id: string) => {
+    idEditNameDialog.value = id
+}
+const resetIdEditNameDialog = () => {
+    idEditNameDialog.value = ""
+}
+
+const idSheetDays = ref<string>("")
+const openSheetDaysById = (id: string) => {
+    idSheetDays.value = id
+}
+const resetIdSheetDays = () => {
+    idSheetDays.value = ""
+}
 </script>
 
 <template>
-    <h1>Main page {{ t("test.btn") }}</h1>
-    <Button>{{ t("test.btn") }}</Button>
-
+    <div class="container py-10 mx-auto ">
+        <DataTable :period="dateOfData" :columns="columns" :data="data" @open-dialog-edit-name="openDialogEditNameById"
+            @open-sheet-days="openSheetDaysById" />
+        <DialogEditName :id-edit-name-dialog="idEditNameDialog" @reset-id-edit-name-dialog="resetIdEditNameDialog" />
+        <SheetDays :period-mounth="dateOfData" :id-sheet-days="idSheetDays" @reset-id-sheet-days="resetIdSheetDays" />
+    </div>
 </template>

@@ -30,8 +30,6 @@ const FORM_EMAIL_MAX_SYMBOLS = 50
 const FORM_PASSWORD_MIN_SYMBOLS = 8
 const FORM_EMAIL_ERROR = "email"
 const FORM_EMAIL_OPTIONS = "@a.a"
-const FORM_MINLENGTH_ERROR = "minLength"
-const FORM_MAXLENGTH_ERROR = "maxLength"
 
 const formSchema = computed(() => toTypedSchema(zod.object({
     email: zod.string()
@@ -59,6 +57,7 @@ const isBtnDisabled = computed(() => !(isFieldDirty("email") && isFieldDirty("pa
 
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth.store';
+import { FORM_MAXLENGTH_ERROR, FORM_MINLENGTH_ERROR } from '@/utils/const';
 
 const authStore = useAuthStore()
 const router = useRouter()
