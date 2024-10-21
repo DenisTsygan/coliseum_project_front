@@ -63,6 +63,9 @@
         },
         "column":{
             "allElectricityConsumed":"1All electricy consumed"
+        },
+        "data-export-dropdawn":{
+            "label":"1Download data like:"
         }
     }
 }

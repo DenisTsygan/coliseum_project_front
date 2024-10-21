@@ -3,6 +3,7 @@ import type { Table } from '@tanstack/vue-table'
 import { Button } from '@/components/shadcn/ui/button'
 import { Input } from '@/components/shadcn/ui/input'
 import { X } from 'lucide-vue-next'
+import DataExportDropdawn from "@/components/electricity-consumed/data-export-dropdawn.vue"
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -17,7 +18,7 @@ const isFiltered = computed(() => props.table.getState().columnFilters.length > 
 </script>
 
 <template>
-    <div class="flex items-center my-4">
+    <div class="flex items-center my-4 justify-between">
         <div class="flex flex-1 items-center space-x-2">
             <Input :placeholder="t('electricityConsumed.data-table-toolbar.filterPlaceHolder')"
                 :model-value="(table.getColumn('name')?.getFilterValue() as string) ?? ''"
@@ -29,5 +30,6 @@ const isFiltered = computed(() => props.table.getState().columnFilters.length > 
                 <X class="ml-2 h-4 w-4" />
             </Button>
         </div>
+        <DataExportDropdawn />
     </div>
 </template>
