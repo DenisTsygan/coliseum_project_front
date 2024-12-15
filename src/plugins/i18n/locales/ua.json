@@ -28,6 +28,14 @@
             }
         }
     },
+    "userInfo":{
+        "label":"12User info",
+        "email":"12Email",
+        "userName":"12Username",
+        "roles":"12Roles",
+        "logout":"12Logout",
+        "logoutAll":"12Logout all sessions"
+    },
     "electricityConsumed":{
         "data-table-edit-name":{
             "btn": "12Edit name"
@@ -67,5 +75,9 @@
         "data-export-dropdawn":{
             "label":"12Download data like:"
         }
+    },
+    "toast":{
+        "logout":"12Error logout",
+        "logoutAll":"12Error logout all sessions"
     }
 }

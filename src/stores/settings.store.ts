@@ -2,7 +2,7 @@ import Trans from "@/plugins/i18n/translation"
 import { LS_KEY_LANGUAGE_MODE } from "@/utils/const"
 import { defineStore } from "pinia"
 import { ref } from "vue"
-
+//TODO save settings (language ,mode dark) for user
 export const useSettingsStore = defineStore('settings',()=> {//TODO rename to languagestore
 
     const languageMode = ref<string>('')

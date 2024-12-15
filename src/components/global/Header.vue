@@ -18,7 +18,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from '@/components/shadcn/ui/sheet'
-
+import UserInfo from './UserInfo.vue';
 import { computed, ref } from 'vue';
 import Trans from '@/plugins/i18n/translation';
 import { useSettingsStore } from '@/stores/settings.store';
@@ -47,6 +47,11 @@ const changeTheme = () => {
 
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n()
+
+import { useAuthStore } from '@/stores/auth.store';
+const authstore = useAuthStore()
+const isShowUserDeteils = computed(() => authstore.getIsAuthUser())
+
 </script>
 
 <template>
@@ -92,6 +97,7 @@ const { t } = useI18n()
                                 </Button>
                             </div>
                         </div>
+                        <UserInfo v-if="isShowUserDeteils" />
                     </SheetDescription>
                 </SheetContent>
             </Sheet>

@@ -17,7 +17,7 @@ function ruPluralizationRules(
 }
 function uaPluralizationRules(
     choice:number,//количество сообщений постов
-    choicesLength:number
+    //choicesLength:number
   ) {
     if (choice === 0) {
       return 0
@@ -29,7 +29,7 @@ function uaPluralizationRules(
 }
 function enPluralizationRules(
     choice:number,//количество сообщений постов
-    choicesLength:number
+    //choicesLength:number
   ) {
     if (choice === 0) {
         return 0

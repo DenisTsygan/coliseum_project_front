@@ -2,6 +2,7 @@
 import Header from '@/components/global/Header.vue';
 import { onBeforeMount } from 'vue';
 import { useSettingsStore } from '@/stores/settings.store';
+import Toaster from './components/shadcn/ui/toast/Toaster.vue';
 
 const settingsStore = useSettingsStore()
 onBeforeMount(() => {
@@ -12,6 +13,7 @@ onBeforeMount(() => {
 <template>
   <Header></Header>
   <RouterView />
+  <Toaster />
 </template>
 
 <style scoped></style>

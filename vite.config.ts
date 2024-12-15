@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import path from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import tailwind from 'tailwindcss'
@@ -8,8 +8,16 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 
-// https://vitejs.dev/config/
-export default defineConfig({
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default ({ mode }:any) => {
+  process.env = {...process.env, ...loadEnv(mode, process.cwd())}
+    return defineConfig({
+  base: process.env.VITE_BASE_URL || '/',
+  server:{
+    port: Number(process.env.VITE_PORT)
+  },
   css: {
     postcss: {
       plugins: [tailwind(), autoprefixer()],
@@ -29,3 +37,4 @@ export default defineConfig({
     }
   },
 })
+}

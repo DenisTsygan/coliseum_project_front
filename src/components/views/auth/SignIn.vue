@@ -25,7 +25,7 @@ import * as zod from 'zod'
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n()
 
-const FORM_EMAIL_MIN_SYMBOLS = 10
+const FORM_EMAIL_MIN_SYMBOLS = 9
 const FORM_EMAIL_MAX_SYMBOLS = 50
 const FORM_PASSWORD_MIN_SYMBOLS = 8
 const FORM_EMAIL_ERROR = "email"
@@ -56,12 +56,10 @@ const isBtnDisabled = computed(() => !(isFieldDirty("email") && isFieldDirty("pa
 
 
 import { useRouter } from 'vue-router';
-import { useAuthStore } from '@/stores/auth.store';
-import { FORM_MAXLENGTH_ERROR, FORM_MINLENGTH_ERROR } from '@/utils/const';
+import { FINGERPRINT, FORM_MAXLENGTH_ERROR, FORM_MINLENGTH_ERROR } from '@/utils/const';
+import { loginRequest } from '@/plugins/axios/request/auth';
 
-const authStore = useAuthStore()
 const router = useRouter()
-
 
 const isActionLoginProcessing = ref<boolean>(false)
 const errorMsgActionLoginProcessing = ref<string>('')
@@ -70,19 +68,17 @@ const goToMainPage = () => {
 }
 
 
-const onSubmit = handleSubmit((values) => {
+const onSubmit = handleSubmit(async (values) => {
     console.log("🚀 ~ onSubmit ~ values:", values)
     isActionLoginProcessing.value = true
-    //TODO request to backend
-    /*signInWithEmailAndPassword(auth, values.email, values.password).then((userCredentional) => {
-        console.log("success logined")
-        authStore.signIn(userCredentional.user)
-        goToMainPage()
-    }).catch((msg: string) => {
-        errorMsgActionLoginProcessing.value = parseErrorMsg(msg + "").msg
-    }).finally(() => {
+    const res = await loginRequest(values.email, values.password, FINGERPRINT)
+    if (res) {
+        errorMsgActionLoginProcessing.value = res
         isActionLoginProcessing.value = false
-    })*/
+    } else {
+        console.log("success logined")
+        goToMainPage()
+    }
 })
 
 </script>
