@@ -1,6 +1,6 @@
 import axios from "axios";
 import type {  AxiosError, AxiosInstance } from "axios";
-import { ERROR_CODE_BAD_REQUEST, ERROR_CODE_NETWORK } from "@/utils/const";
+import { ERROR_CODE_BAD_REQUEST, ERROR_CODE_NETWORK, LS_KEY_A_TOKEN } from "@/utils/const";
 import { useAuthStore } from "@/stores/auth.store";
 import { refreshTokenRequest } from "./request/auth";
 
@@ -48,6 +48,7 @@ $apiData.interceptors.response.use(
         return await axios.request(originalRequest)
       }
     }else{
+      localStorage.removeItem(LS_KEY_A_TOKEN)//error rfresh token when dev mode
       console.log("NO ERROR RESPONCE ")
     }
     console.log("AXIOS REJECT REQUEST")

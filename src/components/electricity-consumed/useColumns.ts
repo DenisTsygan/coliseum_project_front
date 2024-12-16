@@ -1,5 +1,5 @@
 import { computed, h } from 'vue'
-import type IElectricityConsumed from '@/types/IElectricityConsumed'
+import type IElectricityConsumed from '@/types/data/IElectricityConsumed'
 import { ColumnDef } from '@tanstack/vue-table'
 import DataTableEditName from '@/components/electricity-consumed/data-table-edit-name.vue'
 import DataTableShowDays from '@/components/electricity-consumed/data-table-show-days.vue'

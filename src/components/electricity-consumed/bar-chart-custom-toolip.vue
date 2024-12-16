@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/shadcn/ui/card'
 import { useDatastore } from '@/stores/data.store';
 import { SEPARATOR_DATE } from '@/utils/const';
-import { allElectricyConsumedKey, IElectricityConsumedDayKeys, periodDateKey } from '@/types/IElectricityConsumed';//electricyConsumedHoursKey
+import { allElectricyConsumedKey, IElectricityConsumedDayKeys, periodDateKey } from '@/types/data/IElectricityConsumed';//electricyConsumedHoursKey
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n()
 console.log("custom tooltip before created ")

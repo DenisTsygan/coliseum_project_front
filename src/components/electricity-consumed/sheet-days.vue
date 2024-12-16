@@ -12,7 +12,7 @@ import { ref, watch } from 'vue';
 import { useDatastore } from '@/stores/data.store';
 import { useI18n } from 'vue-i18n';
 import { SEPARATOR_DATE } from '@/utils/const';
-import { IElectricityConsumedDay } from '@/types/IElectricityConsumed';
+import { IElectricityConsumedDay } from '@/types/data/IElectricityConsumed';
 
 const { t } = useI18n()
 const dataStore = useDatastore()

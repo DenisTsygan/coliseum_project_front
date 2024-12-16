@@ -1,4 +1,5 @@
-import IElectricityConsumed, { IElectricityConsumedDay } from "@/types/IElectricityConsumed"
+import IElectricityConsumedMounth from "@/types/data/IElectricityConsumed";
+import IElectricityConsumed, { IElectricityConsumedDay } from "@/types/data/IElectricityConsumed"
 import { defineStore } from "pinia"
 import { ref } from "vue"
 
@@ -39,9 +40,13 @@ export const useDatastore = defineStore('data', () => {
     const dataElectricityConsumedPeriod = ref<string>("")
 
     //TODO fetch data and loader
-    const fetchDataCurrentMounth = async()=>{
+    /*const fetchDataCurrentMounth = async()=>{
         dataElectricityConsumedPeriod.value = "02-2024"
         dataElectricityConsumed.value = generateDATA(200,"02-2024")
+    }*/
+    const setDataCurrentMounth = async(dataPeriodPate:string , data:IElectricityConsumedMounth)=>{
+        dataElectricityConsumedPeriod.value = dataPeriodPate
+        dataElectricityConsumed.value = [data]
     }
     const getNameById = (id:string)=>{
         return dataElectricityConsumed.value.find((el)=>{
@@ -70,6 +75,6 @@ export const useDatastore = defineStore('data', () => {
     
     return { dataElectricityConsumed,dataElectricityConsumedPeriod,
         getNameById,getElectricyConsumedDaysById,setNameById,
-        fetchDataCurrentMounth
+         setDataCurrentMounth
     }
 })
