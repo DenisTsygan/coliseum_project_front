@@ -42,15 +42,23 @@
         },
         "data-table":{
             "period":"1Period",
+            "currentPeriod":"1Current period",
             "noResults":"1No results.",
-            "days":"1Days"
+            "days":"1Days",
+            "errorPeriod":{
+                "greater":"1The period cannot be greater than the current one!",
+                "format":"1Invalid format! Use mm-YYYY."
+            }
         },
         "dialog-edit-name":{
             "description":"1Make changes to name. Click save when you're done.",
             "label":"1Name",
             "placeholder":"1name",
             "labelDescrition":"1This is name client.",
-            "submit":"1Save changes"
+            "submit":"1Save changes",
+            "error":{
+                "noChanges":"1You dont change name"
+            }
         },
         "sheet-days":{
             "range":"1Electricy consumed from",
@@ -78,6 +86,7 @@
     },
     "toast":{
         "logout":"1Error logout",
-        "logoutAll":"1Error logout all sessions"
+        "logoutAll":"1Error logout all sessions",
+        "rename": "1Error rename"
     }
 }

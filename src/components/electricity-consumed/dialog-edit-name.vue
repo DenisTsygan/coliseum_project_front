@@ -16,7 +16,7 @@ import {
     FormLabel,
     FormMessage,
 } from '@/components/shadcn/ui/form'
-
+import Loader from '../global/Loader.vue';
 import { Input } from '@/components/shadcn/ui/input'
 import { toTypedSchema } from '@vee-validate/zod'
 import * as zod from 'zod'
@@ -25,7 +25,10 @@ import { useForm } from 'vee-validate';
 import { useI18n } from 'vue-i18n';
 import { FORM_MAXLENGTH_ERROR, FORM_MINLENGTH_ERROR } from '@/utils/const';
 import { useDatastore } from '@/stores/data.store';
+import { renameRequest } from '@/plugins/axios/request/data';
+import { useToast } from '../shadcn/ui/toast';
 
+const { toast } = useToast()
 const dataStore = useDatastore()
 const { t } = useI18n()
 
@@ -70,12 +73,27 @@ const changeOpen = (value: boolean) => {
     }
 }
 
-const onSubmit = handleSubmit((values) => {
+const isShowLoader = ref<boolean>(false)
+const onSubmit = handleSubmit(async (values) => {
     if (values.name !== initName.value) {
-        dataStore.setNameById(values.name, initName.value)
-        //TODO show toast
+        isShowLoader.value = true
+        const res = await renameRequest(values.name, props.idEditNameDialog)
+        if (res) {
+            toast({
+                title: t("toast.rename"),
+                description: res
+            })
+        } else {
+            dataStore.setNameById(values.name, props.idEditNameDialog)
+            changeOpen(false)
+        }
+        isShowLoader.value = false
+    } else {
+        toast({
+            title: t("toast.rename"),
+            description: t("electricityConsumed.dialog-edit-name.error.noChanges")
+        })
     }
-    changeOpen(false)
 })
 </script>
 
@@ -88,7 +106,7 @@ const onSubmit = handleSubmit((values) => {
                     {{ t("electricityConsumed.dialog-edit-name.description") }}
                 </DialogDescription>
             </DialogHeader>
-            <form @submit="onSubmit">
+            <form @submit="onSubmit" v-if="!isShowLoader">
                 <FormField v-slot="{ componentField }" name="name">
                     <FormItem>
                         <FormLabel>{{ t("electricityConsumed.dialog-edit-name.label") }}</FormLabel>
@@ -108,6 +126,7 @@ const onSubmit = handleSubmit((values) => {
                     </Button>
                 </DialogFooter>
             </form>
+            <Loader v-else />
         </DialogContent>
     </Dialog>
 </template>

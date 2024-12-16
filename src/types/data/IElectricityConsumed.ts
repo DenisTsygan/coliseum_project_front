@@ -1,5 +1,6 @@
 export default interface IElectricityConsumedMounth{
     id:string,//uniq
+    clientId: string
     name:string,//uniq
     //clintId -?будет ли информация о клиенте кроме имени (удалить name)
     periodDate: string,// format mounth-year

@@ -7,7 +7,6 @@ import { decodeToken } from "@/utils/jwt"
 import IPayloadAccessToken from "@/types/jwt/IPayloadAccessToken"
 import IUser from "@/types/auth/IUser"
 
-
 const getUserFromAccessToken = (access_token:string)=>{
     const accessTokenPayloadStr = decodeToken(access_token)
     const accessTokenPayload:IPayloadAccessToken = JSON.parse(accessTokenPayloadStr)

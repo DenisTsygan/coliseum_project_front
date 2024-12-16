@@ -1,6 +1,6 @@
 import axios from "axios";
 import type {  AxiosError, AxiosInstance } from "axios";
-import { ERROR_CODE_BAD_REQUEST, ERROR_CODE_NETWORK, LS_KEY_A_TOKEN } from "@/utils/const";
+import { ERR_BAD_REQUEST, ERROR_CODE_BAD_REQUEST, ERROR_CODE_NETWORK, LS_KEY_A_TOKEN } from "@/utils/const";
 import { useAuthStore } from "@/stores/auth.store";
 import { refreshTokenRequest } from "./request/auth";
 
@@ -71,17 +71,19 @@ export const $RefreshTokenApi = $refreshTokenApi
 export default $apiData;
 
 
-export const parseErrorRequest = (err:AxiosError):string=>{
+export const parseErrorRequest = (err:AxiosError):string=>{//TODO login with admin and add MSG on 403 - not permission for action
 
     switch(err.code){
         case ERROR_CODE_NETWORK:
             return "Server is not avaible"
 
         case ERROR_CODE_BAD_REQUEST:
-            const responce  = err.response?.data +""
-            const arr  =responce.split("at")
-            const str = err.message + "|"+arr[0]
+            let responce  = err.response?.data +""
+            let arr  =responce.split("at")
+            let str = err.message + "|"+arr[0]
             return str
+        case ERR_BAD_REQUEST:
+              return err.message + "| Not provided"
         default:
             return "No code message"
     }
