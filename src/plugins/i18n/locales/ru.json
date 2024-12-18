@@ -87,6 +87,10 @@
     "toast":{
         "logout":"1Error logout",
         "logoutAll":"1Error logout all sessions",
-        "rename": "1Error rename"
+        "rename": "1Error rename",
+        "export":{
+            "excel":"1Error export Excel file",
+            "onec":"1Error export Csv file for 1C"
+        }
     }
 }

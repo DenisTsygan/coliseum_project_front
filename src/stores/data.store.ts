@@ -39,7 +39,9 @@ const generateDATA = (lengthMounth:number,periodDate:string)=>{
 export const useDatastore = defineStore('data', () => {
     const dataElectricityConsumed = ref<IElectricityConsumed[]>([])
     const dataElectricityConsumedPeriod = ref<string>("")
-
+    const getDataElectricityConsumedPeriod=()=>{
+        return dataElectricityConsumedPeriod.value
+    }
     /*const fetchDataCurrentMounth = async()=>{
         dataElectricityConsumedPeriod.value = "02-2024"
         dataElectricityConsumed.value = generateDATA(200,"02-2024")
@@ -73,6 +75,6 @@ export const useDatastore = defineStore('data', () => {
 
     return { dataElectricityConsumed,dataElectricityConsumedPeriod,
         getNameById,getElectricyConsumedDaysById,setNameById,
-         setDataCurrentMounth
+         setDataCurrentMounth, getDataElectricityConsumedPeriod
     }
 })
